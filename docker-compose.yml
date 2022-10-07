@@ -9,7 +9,8 @@ services:
     healthcheck:
         test: ["CMD","mysqladmin","ping","-h","localhost"]
         timeout: 5s
-        retries: 5
+        retries: 1
+        start_period: 5s
   django:
     image: djangoharshith:1
     restart: always
