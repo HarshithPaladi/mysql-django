@@ -1,4 +1,5 @@
 # MySQL - Django Docker Compose Example
+[![Docker](https://github.com/HarshithPaladi/mysql-django/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/HarshithPaladi/mysql-django/actions/workflows/docker-publish.yml)
 1. Download the docker-compose.yml from 
 `
 https://raw.githubusercontent.com/HarshithPaladi/mysql-django/beta/docker-compose.yml
