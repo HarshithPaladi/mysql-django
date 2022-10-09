@@ -3,7 +3,7 @@
 `
 https://raw.githubusercontent.com/HarshithPaladi/mysql-django/beta/docker-compose.yml
 `
-> Use wget
+> Use wget or any other tool
 1. Pull the image :
 ```
 docker pull ghcr.io/harshithpaladi/mysql-django:master
