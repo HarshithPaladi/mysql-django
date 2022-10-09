@@ -12,6 +12,8 @@ on:
     branches: [ "master" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
+    # Ignore the paths for avoiding unnecessary builds
+    # when information files are updated
     paths-ignore:
       - '**/README.md'
   pull_request:
