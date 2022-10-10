@@ -16,7 +16,14 @@ services:
       - mysql_data:/var/lib/mysql:rw
 
   django:
-    image: djangoharshith:2
+    image: ghcr.io/harshithpaladi/mysql-django:latest
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   cache_from:
+    #     - ghcr.io/harshithpaladi/mysql-django
+    #     - type=registry,ref=ghcr.io/harshithpaladi/mysql-django
+    #     - mysql-django
     restart: always
     ports:
       - "8888:8000"
