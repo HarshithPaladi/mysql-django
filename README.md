@@ -5,7 +5,7 @@
 > Use wget or any other tool
 1. Pull the image :
 ```
-docker pull ghcr.io/harshithpaladi/mysql-django:master
+docker pull ghcr.io/harshithpaladi/mysql-django
 ```
 1. Use Docker Compose to start the services
 ```
