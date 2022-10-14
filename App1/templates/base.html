@@ -1,0 +1,85 @@
+{% extends 'bootstrap.html' %}
+{% block content %}
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <ul class="nav justify-content-center|justify-content-end">
+            <li class="nav-brand">
+                <a class="nav-link" href="{% url 'App1:index' %}">HomePage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+            </li>
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            <li><a class='nav-link' href="{% url 'App1:logout' %}">logout</a></li>
+            {% else %}
+            <li><a class='nav-link' href="{% url 'login' %}">login</a></li>
+            {% endif %}
+
+        </ul>
+
+    </div>
+
+</nav>
+{% if form %}
+<h2> Enter the details</h2>
+<form action="" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="Click to Submit">
+
+</form>
+  
+{% endif %}
+{% if msg and link %}
+<h2>{{ msg }}</h2>
+<a href="{% url 'App1:create' %}">Enter Again</a>
+{% endif %}
+{% if init %}
+<h1>Hello there</h1>
+<h2>Create DATA : <a href="{% url 'App1:create' %}">Enter the DATA</a></h2>
+<h2>Display DATA : <a href="{% url 'App1:show' %}">Display the DATA</a></h2>
+
+{% endif %}
+
+{% if data %}
+<style>
+    table,
+    th,
+    td {
+        border: 3px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<title>Django Forms and Models</title>
+<h1>Test Data</h1>
+<div class="data">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Mark 1</th>
+                <th>Mark 2</th>
+                <th>Mark 3</th>
+                <th>Average</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        {% for dat in data %}
+        <tbody>
+            <tr>
+                <td scope="row">{{dat.name}}</td>
+                <td>{{dat.age}}</td>
+                <td>{{dat.mark1}}</td>
+                <td>{{dat.mark2}}</td>
+                <td>{{dat.mark3}}</td>
+                <td>{{dat.avg}}</td>
+                <td>{{dat.grade}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock content %}

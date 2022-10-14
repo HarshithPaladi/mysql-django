@@ -16,7 +16,8 @@ services:
       - mysql_data:/var/lib/mysql:rw
 
   django:
-    image: ghcr.io/harshithpaladi/mysql-django:latest
+    # image: ghcr.io/harshithpaladi/mysql-django:latest
+    image: mysql-django:2
     # build:
     #   context: .
     #   dockerfile: Dockerfile
@@ -30,5 +31,6 @@ services:
     depends_on:
         mysql_host:
           condition: service_healthy
+    command: bash -c "python3 manage.py makemigrations App1 && python3 manage.py migrate App1 && python3 manage.py runserver 0.0.0.0:8000"
 volumes:
   mysql_data:
