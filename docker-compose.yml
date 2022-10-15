@@ -18,8 +18,8 @@ services:
       - mysql_data:/var/lib/mysql:rw
 
   django:
-    # image: ghcr.io/harshithpaladi/mysql-django:latest
-    image: mysql-django:6
+    image: ghcr.io/harshithpaladi/mysql-django:latest
+    # image: mysql-django:6
     # build:
     #   context: .
     #   dockerfile: Dockerfile
