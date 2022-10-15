@@ -61,7 +61,7 @@ def user_create(request):
             test.save()
             return render(request,'base.html',{'msg':'User Created Successfully','link':'App1:index'})
         else:
-            return render(request,'create.html',{'form':form})
+            return render(request,'base.html',{'form':form})
 @login_required(login_url="/login")
 def show(request):
     data = Student.objects.order_by('avg')
