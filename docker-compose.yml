@@ -1,5 +1,10 @@
 version: '3.9'
+# Declare the services here that compose your app.
 services:
+  # Define the individual services in your app.
+  # Names of services are used to build network names and service names.
+  # The name of the service is also used as the host & container name.
+  # For DNS resolution, the name of the service is used as the domain name.
   mysql_host:
     image: mysql
     restart: always
@@ -10,10 +15,11 @@ services:
         # test: "mysqladmin ping -h localhost -p$$MYSQL_ROOT_PASSWORD"
         test: "mysqladmin ping --silent"
         # test: "mysqladmin ping -u root -p$$MYSQL_ROOT_PASSWORD"
-        interval: 1s
-        timeout: 1s
-        retries: 3
-        start_period: 2s
+        interval: 1s # Starts checking after 1 second
+        timeout: 1s # If a check takes longer than timeout, it is considered a failure
+        retries: 3 # Number of retries before marking the service as unhealthy
+        start_period: 1s # Time to wait before starting the first healthcheck, 
+        # to allow the container to start, if check passes in this time, container is marked healthy
     volumes:
       - mysql_data:/var/lib/mysql:rw
 
@@ -29,10 +35,10 @@ services:
     #     - mysql-django
     restart: always
     ports:
-      - "8888:8000"
+      - "8888:8000" # host:container
     depends_on:
         mysql_host:
-          condition: service_healthy
+          condition: service_healthy # if the service is healthy, then only start this service
     command: sh -c "python3 manage.py makemigrations App1 && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
 volumes:
-  mysql_data:
+  mysql_data: # Declaraing a volume
