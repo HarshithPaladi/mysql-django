@@ -31,6 +31,6 @@ services:
     depends_on:
         mysql_host:
           condition: service_healthy
-    command: bash -c "python3 manage.py makemigrations App1 && python3 manage.py migrate App1 && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python3 manage.py makemigrations App1 && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
 volumes:
   mysql_data:
