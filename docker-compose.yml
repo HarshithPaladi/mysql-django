@@ -9,9 +9,11 @@ services:
     healthcheck:
         # test: "mysqladmin ping -h localhost -p$$MYSQL_ROOT_PASSWORD"
         test: "mysqladmin ping --silent"
-        timeout: 5s
-        retries: 2
-        start_period: 10s
+        # test: "mysqladmin ping -u root -p$$MYSQL_ROOT_PASSWORD"
+        interval: 1s
+        timeout: 1s
+        retries: 3
+        start_period: 2s
     volumes:
       - mysql_data:/var/lib/mysql:rw
 
