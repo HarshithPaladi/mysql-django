@@ -12,8 +12,7 @@ services:
       - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_DATABASE=mysql_db
     healthcheck:
-        # test: "mysqladmin ping -h localhost -p$$MYSQL_ROOT_PASSWORD"
-        test: "mysqladmin ping --silent"
+        test: "mysqladmin ping --silent" # check if mysqld is alive
         # test: "mysqladmin ping -u root -p$$MYSQL_ROOT_PASSWORD"
         interval: 1s # Starts checking after 1 second
         timeout: 1s # If a check takes longer than timeout, it is considered a failure
