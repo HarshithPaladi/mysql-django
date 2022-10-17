@@ -8,7 +8,7 @@ WORKDIR /tmp/pip
 COPY requirements.txt ./requirements.txt
 # RUN python3 -m pip install --upgrade pip && python3 -m pip wheel --no-cache-dir --wheel-dir /tmp/wheels -r requirements.txt
 # Installing required packages into a folder to use them in later stage
-RUN python3 -m pip install --target /tmp/pip -r requirements.txt
+RUN python3 -m pip install --no-cache-dir --target /tmp/pip -r requirements.txt
 
 # Stage 2
 # Using lightweight python image (alpine)
